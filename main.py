@@ -38,7 +38,7 @@ def read_root():
 
 
 @app.get("/items/{item_id}", response_model=Item, responses={404: {"model": Message,
-                                                                   "description": "The item was not found"},
+                                                                   "description": "he resource was not found"},
                                                              400: {"model": Message}})
 async def read_item(item_id: str):
     if item_id == "foo":
