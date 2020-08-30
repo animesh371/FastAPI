@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 from db.EmployeeRepository import EmployeeRepository
-from models.Employee import Employee
+from models.Employee import EmployeeRepository
 
 app = FastAPI()
 
@@ -52,7 +52,7 @@ async def read_item(item_id: str):
         return JSONResponse(status_code=404, content={"message": "Item not found"})
 
 
-@app.post("/employee/", response_model=Employee)
-async def add_employee(employee: Employee):
+@app.post("/employee/", response_model=EmployeeRepository)
+async def add_employee(employee: EmployeeRepository):
     EmployeeRepository.create(employee)
     return employee
